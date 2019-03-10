@@ -23,7 +23,7 @@ func main() {
 	if err == nil {
 		exe = filepath.Base(exe)
 		switch exe {
-		case "gti":
+		case "gti", "gti.exe":
 			img = "/gti.txt"
 		default:
 			img = "/cat.txt"

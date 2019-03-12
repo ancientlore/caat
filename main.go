@@ -28,7 +28,7 @@ func main() {
 		default:
 			img = "/cat.txt"
 		}
-		fmt.Println(exe)
+		// fmt.Println(exe)
 	}
 	fmt.Println(string(Lookup(img)))
 }

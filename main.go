@@ -6,16 +6,21 @@ You can also `ln -s caat gti` and it will print a GTI.
 */
 package main
 
-//go:generate binder -o cat.go cat.txt gti.txt
-
 // Use github.com/davecheney/godoc2md to generate README file.
 //go:generate bash -c "godoc2md -ex . | sed -e 's/\\/src\\/target\\///g' -e 's/import \".\"/import \"github.com\\/ancientlore\\/caat\"/' > README.md"
 
 import (
+	_ "embed"
 	"fmt"
 	"os"
 	"path/filepath"
 )
+
+//go:embed cat.txt
+var caat string
+
+//go:embed gti.txt
+var gti string
 
 func main() {
 	var img string
@@ -24,11 +29,11 @@ func main() {
 		exe = filepath.Base(exe)
 		switch exe {
 		case "gti", "gti.exe":
-			img = "/gti.txt"
+			img = gti
 		default:
-			img = "/cat.txt"
+			img = caat
 		}
 		// fmt.Println(exe)
 	}
-	fmt.Println(string(Lookup(img)))
+	fmt.Println(img)
 }
